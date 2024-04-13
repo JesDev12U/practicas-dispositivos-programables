@@ -1,4 +1,18 @@
-
+;****************************************************************************
+;   Autores: Jesus Antonio Lopez Bandala y Kitzya Minerva Luna Guadarrama
+;   Practica 2
+;   Secuencia: 4NV42
+;   Checar la linea de produccion de bubulubu
+;   Si A1 es 1, se enciende B1 y B2 indicando que todo esta funcionando bien
+;   Si A1 es 0, se enciende B4, B5 y B7 indicando que algo esta fallando
+;   B1 -> Luz Verde
+;   B2 -> Linea de produccion
+;   B4 -> Luz Roja
+;   B5 -> Alarma sonora
+;   B7 -> Banner
+;   A1 -> Entrada que indica el estado de la produccion
+;   Representarlo mediante una tira de LEDS
+;****************************************************************************
 
  
  		LIST P=18F4550 			;directive to define processor
