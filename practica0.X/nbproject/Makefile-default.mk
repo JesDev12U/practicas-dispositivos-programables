@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=practica0.asm
+SOURCEFILES_QUOTED_IF_SPACED=practica0.asm header.asm
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/practica0.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/practica0.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/practica0.o ${OBJECTDIR}/header.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/practica0.o.d ${OBJECTDIR}/header.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/practica0.o
+OBJECTFILES=${OBJECTDIR}/practica0.o ${OBJECTDIR}/header.o
 
 # Source Files
-SOURCEFILES=practica0.asm
+SOURCEFILES=practica0.asm header.asm
 
 
 
@@ -103,6 +103,14 @@ ${OBJECTDIR}/practica0.o: practica0.asm  nbproject/Makefile-${CND_CONF}.mk
 	@${DEP_GEN} -d "${OBJECTDIR}/practica0.o"
 	@${FIXDEPS} "${OBJECTDIR}/practica0.o.d" $(SILENT) -rsi ${MP_AS_DIR} -c18 
 	
+${OBJECTDIR}/header.o: header.asm  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/header.o.d 
+	@${RM} ${OBJECTDIR}/header.o 
+	@${FIXDEPS} dummy.d -e "${OBJECTDIR}/header.err" $(SILENT) -c ${MP_AS} $(MP_EXTRA_AS_PRE) -d__DEBUG -d__MPLAB_DEBUGGER_SIMULATOR=1 -q -p$(MP_PROCESSOR_OPTION)  -l\"${OBJECTDIR}/header.lst\" -e\"${OBJECTDIR}/header.err\" $(ASM_OPTIONS)    -o\"${OBJECTDIR}/header.o\" \"header.asm\" 
+	@${DEP_GEN} -d "${OBJECTDIR}/header.o"
+	@${FIXDEPS} "${OBJECTDIR}/header.o.d" $(SILENT) -rsi ${MP_AS_DIR} -c18 
+	
 else
 ${OBJECTDIR}/practica0.o: practica0.asm  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -111,6 +119,14 @@ ${OBJECTDIR}/practica0.o: practica0.asm  nbproject/Makefile-${CND_CONF}.mk
 	@${FIXDEPS} dummy.d -e "${OBJECTDIR}/practica0.err" $(SILENT) -c ${MP_AS} $(MP_EXTRA_AS_PRE) -q -p$(MP_PROCESSOR_OPTION)  -l\"${OBJECTDIR}/practica0.lst\" -e\"${OBJECTDIR}/practica0.err\" $(ASM_OPTIONS)    -o\"${OBJECTDIR}/practica0.o\" \"practica0.asm\" 
 	@${DEP_GEN} -d "${OBJECTDIR}/practica0.o"
 	@${FIXDEPS} "${OBJECTDIR}/practica0.o.d" $(SILENT) -rsi ${MP_AS_DIR} -c18 
+	
+${OBJECTDIR}/header.o: header.asm  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/header.o.d 
+	@${RM} ${OBJECTDIR}/header.o 
+	@${FIXDEPS} dummy.d -e "${OBJECTDIR}/header.err" $(SILENT) -c ${MP_AS} $(MP_EXTRA_AS_PRE) -q -p$(MP_PROCESSOR_OPTION)  -l\"${OBJECTDIR}/header.lst\" -e\"${OBJECTDIR}/header.err\" $(ASM_OPTIONS)    -o\"${OBJECTDIR}/header.o\" \"header.asm\" 
+	@${DEP_GEN} -d "${OBJECTDIR}/header.o"
+	@${FIXDEPS} "${OBJECTDIR}/header.o.d" $(SILENT) -rsi ${MP_AS_DIR} -c18 
 	
 endif
 
