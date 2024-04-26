@@ -3,13 +3,13 @@ include "header.inc"
     movwf TRISA
     movlw 0x00
     movwf TRISB
-    
-inicio    movlw   0x5a
-	  ;movwf  llave
-	  movwf   0x0A
-	  movf    PORTA, W
-	  ;SUBWF  llave, W
-	  subwf   0x0A, W
+
+LLAVE	  equ	0x0a
+	  movlw 0x5a
+	  movwf LLAVE
+	 
+inicio    movf    PORTA, W
+	  subwf   LLAVE, W
 	  btfss   STATUS, Z
 	  bra	  NA
 	  bra	  acceso

@@ -1,4 +1,4 @@
-MPASM 5.87                  PRACTICA3BIS.ASM   4-25-2024  1:25:27         PAGE  1
+MPASM 5.87                  PRACTICA3BIS.ASM   4-26-2024  13:54:03         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ Warning[205]: Found directive in column 1. (CONFIG)
 Warning[205]: Found directive in column 1. (CONFIG)
                       00024 CONFIG  LPT1OSC=OFF             ;TIMER1 CONFIURADO PARA OPERAR EN BAJA POTENCIA
 Warning[205]: Found directive in column 1. (CONFIG)
-MPASM 5.87                  PRACTICA3BIS.ASM   4-25-2024  1:25:27         PAGE  2
+MPASM 5.87                  PRACTICA3BIS.ASM   4-26-2024  13:54:03         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -116,7 +116,7 @@ Warning[205]: Found directive in column 1. (CONFIG)
 Warning[205]: Found directive in column 1. (CONFIG)
                       00054 CONFIG   EBTR3=OFF
                       00055 
-MPASM 5.87                  PRACTICA3BIS.ASM   4-25-2024  1:25:27         PAGE  3
+MPASM 5.87                  PRACTICA3BIS.ASM   4-26-2024  13:54:03         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -167,15 +167,15 @@ Warning[203]: Found opcode in column 1. (movwf)
 000016 6E92           00003     movwf TRISA
 000018 0E00           00004     movlw 0x00
 00001A 6E93           00005     movwf TRISB
-                      00006     
-00001C 0E5A           00007 inicio    movlw   0x5a
-                      00008           ;movwf  llave
-00001E 6E0A           00009           movwf   0x0A
-000020 5080           00010           movf    PORTA, W
-                      00011           ;SUBWF  llave, W
-000022 5C0A           00012           subwf   0x0A, W
+                      00006 
+  0000000A            00007 LLAVE     equ   0x0a
+00001C 0E5A           00008           movlw 0x5a
+00001E 6E0A           00009           movwf LLAVE
+                      00010          
+000020 5080           00011 inicio    movf    PORTA, W
+000022 5C0A           00012           subwf   LLAVE, W
 000024 A4D8           00013           btfss   STATUS, Z
-MPASM 5.87                  PRACTICA3BIS.ASM   4-25-2024  1:25:27         PAGE  4
+MPASM 5.87                  PRACTICA3BIS.ASM   4-26-2024  13:54:03         PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -192,7 +192,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 000034 D???           00022         bra     inicio
 Warning[205]: Found directive in column 1. (end)
                       00023 end
-MPASM 5.87                  PRACTICA3BIS.ASM   4-25-2024  1:25:27         PAGE  5
+MPASM 5.87                  PRACTICA3BIS.ASM   4-26-2024  13:54:03         PAGE  5
 
 
 SYMBOL TABLE
@@ -251,7 +251,7 @@ BRG16                             00000003
 BRGH                              00000002
 BSR                               00000FE0
 BTOEE                             00000004
-MPASM 5.87                  PRACTICA3BIS.ASM   4-25-2024  1:25:27         PAGE  6
+MPASM 5.87                  PRACTICA3BIS.ASM   4-26-2024  13:54:03         PAGE  6
 
 
 SYMBOL TABLE
@@ -310,7 +310,7 @@ CM2                               00000002
 CMCON                             00000FB4
 CMIE                              00000006
 CMIF                              00000006
-MPASM 5.87                  PRACTICA3BIS.ASM   4-25-2024  1:25:27         PAGE  7
+MPASM 5.87                  PRACTICA3BIS.ASM   4-26-2024  13:54:03         PAGE  7
 
 
 SYMBOL TABLE
@@ -369,7 +369,7 @@ EEIP                              00000004
 EEPGD                             00000007
 ENDP0                             00000003
 ENDP1                             00000004
-MPASM 5.87                  PRACTICA3BIS.ASM   4-25-2024  1:25:27         PAGE  8
+MPASM 5.87                  PRACTICA3BIS.ASM   4-26-2024  13:54:03         PAGE  8
 
 
 SYMBOL TABLE
@@ -428,7 +428,7 @@ HLVDL3                            00000003
 I2C_DAT                           00000005
 I2C_READ                          00000002
 I2C_START                         00000003
-MPASM 5.87                  PRACTICA3BIS.ASM   4-25-2024  1:25:27         PAGE  9
+MPASM 5.87                  PRACTICA3BIS.ASM   4-26-2024  13:54:03         PAGE  9
 
 
 SYMBOL TABLE
@@ -487,7 +487,7 @@ LATA6                             00000006
 LATB                              00000F8A
 LATB0                             00000000
 LATB1                             00000001
-MPASM 5.87                  PRACTICA3BIS.ASM   4-25-2024  1:25:27         PAGE 10
+MPASM 5.87                  PRACTICA3BIS.ASM   4-26-2024  13:54:03         PAGE 10
 
 
 SYMBOL TABLE
@@ -518,6 +518,7 @@ LATE                              00000F8D
 LATE0                             00000000
 LATE1                             00000001
 LATE2                             00000002
+LLAVE                             0000000A
 LVDCON                            00000FD2
 LVDEN                             00000004
 LVDIE                             00000002
@@ -545,13 +546,13 @@ NOT_RBPU                          00000007
 NOT_RI                            00000004
 NOT_T1SYNC                        00000002
 NOT_T3SYNC                        00000002
-NOT_TO                            00000003
-MPASM 5.87                  PRACTICA3BIS.ASM   4-25-2024  1:25:27         PAGE 11
+MPASM 5.87                  PRACTICA3BIS.ASM   4-26-2024  13:54:03         PAGE 11
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+NOT_TO                            00000003
 NOT_W                             00000002
 NOT_WRITE                         00000002
 OERR                              00000001
@@ -604,13 +605,13 @@ POR                               00000001
 PORTA                             00000F80
 PORTB                             00000F81
 PORTC                             00000F82
-PORTD                             00000F83
-MPASM 5.87                  PRACTICA3BIS.ASM   4-25-2024  1:25:27         PAGE 12
+MPASM 5.87                  PRACTICA3BIS.ASM   4-26-2024  13:54:03         PAGE 12
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+PORTD                             00000F83
 PORTE                             00000F84
 POSTDEC0                          00000FED
 POSTDEC1                          00000FE5
@@ -663,13 +664,13 @@ RC5                               00000005
 RC6                               00000006
 RC7                               00000007
 RCEN                              00000003
-RCIDL                             00000006
-MPASM 5.87                  PRACTICA3BIS.ASM   4-25-2024  1:25:27         PAGE 13
+MPASM 5.87                  PRACTICA3BIS.ASM   4-26-2024  13:54:03         PAGE 13
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+RCIDL                             00000006
 RCIE                              00000005
 RCIF                              00000005
 RCIP                              00000005
@@ -722,13 +723,13 @@ SPP1                              00000001
 SPP2                              00000002
 SPP3                              00000003
 SPP4                              00000004
-SPP5                              00000005
-MPASM 5.87                  PRACTICA3BIS.ASM   4-25-2024  1:25:27         PAGE 14
+MPASM 5.87                  PRACTICA3BIS.ASM   4-26-2024  13:54:03         PAGE 14
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+SPP5                              00000005
 SPP6                              00000006
 SPP7                              00000007
 SPPBUSY                           00000004
@@ -781,13 +782,13 @@ T0IF                              00000002
 T0IP                              00000002
 T0PS0                             00000000
 T0PS1                             00000001
-T0PS2                             00000002
-MPASM 5.87                  PRACTICA3BIS.ASM   4-25-2024  1:25:27         PAGE 15
+MPASM 5.87                  PRACTICA3BIS.ASM   4-26-2024  13:54:03         PAGE 15
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+T0PS2                             00000002
 T0SE                              00000004
 T13CKI                            00000000
 T1CKPS0                           00000004
@@ -840,13 +841,13 @@ TMR2ON                            00000002
 TMR3                              00000FB2
 TMR3CS                            00000001
 TMR3H                             00000FB3
-TMR3IE                            00000001
-MPASM 5.87                  PRACTICA3BIS.ASM   4-25-2024  1:25:27         PAGE 16
+MPASM 5.87                  PRACTICA3BIS.ASM   4-26-2024  13:54:03         PAGE 16
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+TMR3IE                            00000001
 TMR3IF                            00000001
 TMR3IP                            00000001
 TMR3L                             00000FB2
@@ -899,13 +900,13 @@ TRISE2                            00000002
 TRMT                              00000001
 TRNIE                             00000003
 TRNIF                             00000003
-TUN0                              00000000
-MPASM 5.87                  PRACTICA3BIS.ASM   4-25-2024  1:25:27         PAGE 17
+MPASM 5.87                  PRACTICA3BIS.ASM   4-26-2024  13:54:03         PAGE 17
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+TUN0                              00000000
 TUN1                              00000001
 TUN2                              00000002
 TUN3                              00000003
@@ -958,13 +959,13 @@ USBIE                             00000005
 USBIF                             00000005
 USBIP                             00000005
 USTAT                             00000F6C
-UTEYE                             00000007
-MPASM 5.87                  PRACTICA3BIS.ASM   4-25-2024  1:25:27         PAGE 18
+MPASM 5.87                  PRACTICA3BIS.ASM   4-26-2024  13:54:03         PAGE 18
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+UTEYE                             00000007
 UTRDIS                            00000003
 VCFG0                             00000004
 VCFG1                             00000005
@@ -1017,13 +1018,13 @@ _CP3_OFF_5L                       000000FF
 _CP3_ON_5L                        000000F7
 _CPB_OFF_5H                       000000FF
 _CPB_ON_5H                        000000BF
-_CPD_OFF_5H                       000000FF
-MPASM 5.87                  PRACTICA3BIS.ASM   4-25-2024  1:25:27         PAGE 19
+MPASM 5.87                  PRACTICA3BIS.ASM   4-26-2024  13:54:03         PAGE 19
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+_CPD_OFF_5H                       000000FF
 _CPD_ON_5H                        0000007F
 _CPUDIV_OSC1_PLL2_1L              000000E7
 _CPUDIV_OSC2_PLL3_1L              000000EF
@@ -1076,13 +1077,13 @@ _LVP_ON_4L                        000000FF
 _MCLRE_OFF_3H                     0000007F
 _MCLRE_ON_3H                      000000FF
 _PBADEN_OFF_3H                    000000FD
-_PBADEN_ON_3H                     000000FF
-MPASM 5.87                  PRACTICA3BIS.ASM   4-25-2024  1:25:27         PAGE 20
+MPASM 5.87                  PRACTICA3BIS.ASM   4-26-2024  13:54:03         PAGE 20
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+_PBADEN_ON_3H                     000000FF
 _PLLDIV_10_1L                     000000FE
 _PLLDIV_12_1L                     000000FF
 _PLLDIV_1_1L                      000000F8
@@ -1135,13 +1136,13 @@ _XINST_OFF_4L                     000000BF
 _XINST_ON_4L                      000000FF
 __18F4550                         00000001
 acceso                            00000030
-inicio                            0000001C
-MPASM 5.87                  PRACTICA3BIS.ASM   4-25-2024  1:25:27         PAGE 21
+MPASM 5.87                  PRACTICA3BIS.ASM   4-26-2024  13:54:03         PAGE 21
 
 
+SYMBOL TABLE
+  LABEL                             VALUE 
 
-
-
+inicio                            00000020
 
 Errors   :     0
 Warnings :    54 reported,     0 suppressed
