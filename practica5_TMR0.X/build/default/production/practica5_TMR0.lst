@@ -1,4 +1,4 @@
-MPASM 5.87                     PRACTICA5.ASM   5-4-2024  13:14:52         PAGE  1
+MPASM 5.87                PRACTICA5_TMR0.ASM   5-4-2024  13:11:38         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -30,7 +30,8 @@ Warning[205]: Found directive in column 1. (CONFIG)
                       00008 
                       00009 ;CONFIG1H dir 300001h      08
 Warning[205]: Found directive in column 1. (CONFIG)
-                      00010 CONFIG  FOSC=INTOSCIO_EC        ;OSCILADOR INTERNO, RA6 COMO PIN, USB USA OSC EC
+                      00010 CONFIG  FOSC=INTOSC_HS  ;INTOSCIO_EC                    ;               ;OSCILADOR INTERNO, RA6 COMO PIN
+                            , USB USA OSC EC
 Warning[205]: Found directive in column 1. (CONFIG)
                       00011 CONFIG  FCMEN=OFF       ;DESHABILITDO EL MONITOREO DEL RELOJ
 Warning[205]: Found directive in column 1. (CONFIG)
@@ -41,7 +42,7 @@ Warning[205]: Found directive in column 1. (CONFIG)
 Warning[205]: Found directive in column 1. (CONFIG)
                       00015 CONFIG  BOR=OFF                 ;BROWN OUT RESET DESHABILITADO
 Warning[205]: Found directive in column 1. (CONFIG)
-                      00016 CONFIG BORV=3                   ;RESET AL MINIMO VOLTAJE NO UTILZADO EN ESTE CASO
+                      00016 CONFIG  BORV=3                  ;RESET AL MINIMO VOLTAJE NO UTILZADO EN ESTE CASO
 Warning[205]: Found directive in column 1. (CONFIG)
                       00017 CONFIG  VREGEN=ON               ;REULADOR DE USB ENCENDIDO
                       00018 ;CONFIG2H DIR 300003H           1E
@@ -56,19 +57,19 @@ Warning[205]: Found directive in column 1. (CONFIG)
                       00023 CONFIG  PBADEN=OFF      ;PUERTO B PINES DEL 0 AL 4 ENTRADAS DIGITALES
 Warning[205]: Found directive in column 1. (CONFIG)
                       00024 CONFIG  LPT1OSC=OFF             ;TIMER1 CONFIURADO PARA OPERAR EN BAJA POTENCIA
-Warning[205]: Found directive in column 1. (CONFIG)
-MPASM 5.87                     PRACTICA5.ASM   5-4-2024  13:14:52         PAGE  2
+MPASM 5.87                PRACTICA5_TMR0.ASM   5-4-2024  13:11:38         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
+Warning[205]: Found directive in column 1. (CONFIG)
                       00025 CONFIG  MCLRE=ON        ;MASTER CLEAR HABILITADO
                       00026 ;CONFIG4L DIR 300006H           81
 Warning[205]: Found directive in column 1. (CONFIG)
                       00027 CONFIG  STVREN=ON               ;SI EL STACK SE LLENA CAUSE RESET               
 Warning[205]: Found directive in column 1. (CONFIG)
-                      00028 CONFIG  LVP=OFF                 ;PROGRAMACI N EN BAJO VOLTAJE APAGADO
+                      00028 CONFIG  LVP=OFF                 ;PROGRAMACIÒN EN BAJO VOLTAJE APAGADO
 Warning[205]: Found directive in column 1. (CONFIG)
                       00029 CONFIG  ICPRT=OFF               ;REGISTRO ICPORT DESHABILITADO
 Warning[205]: Found directive in column 1. (CONFIG)
@@ -76,7 +77,7 @@ Warning[205]: Found directive in column 1. (CONFIG)
                             TADO
                       00031 ;CONFIG5L DIR 300008H           0F
 Warning[205]: Found directive in column 1. (CONFIG)
-                      00032 CONFIG  CP0=OFF                 ;LOS BLOQUES DEL C DIGO DE PROGRAMA
+                      00032 CONFIG  CP0=OFF                 ;LOS BLOQUES DEL CÒDIGO DE PROGRAMA
 Warning[205]: Found directive in column 1. (CONFIG)
                       00033 CONFIG  CP1=OFF         ;NO ESTAN PROTEGIDOS
 Warning[205]: Found directive in column 1. (CONFIG)
@@ -115,97 +116,104 @@ Warning[205]: Found directive in column 1. (CONFIG)
                       00053 CONFIG   EBTR2=OFF
 Warning[205]: Found directive in column 1. (CONFIG)
                       00054 CONFIG   EBTR3=OFF
-                      00055 
-MPASM 5.87                     PRACTICA5.ASM   5-4-2024  13:14:52         PAGE  3
+MPASM 5.87                PRACTICA5_TMR0.ASM   5-4-2024  13:11:38         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
+                      00055 
                       00056 ;CONFIG7H DIR 30000DH           40
 Warning[205]: Found directive in column 1. (CONFIG)
                       00057 CONFIG   EBTRB=OFF              ;TABLAS NO PROTEGIDAS
                       00058 
+                      00059 
 Warning[205]: Found directive in column 1. (CBLOCK)
-                      00059 CBLOCK 0x0                      ; PARA VARIABLES
-                      00060  
+                      00060 CBLOCK 0x0                      ; PARA VARIABLES
 Warning[205]: Found directive in column 1. (ENDC)
-                      00061 ENDC 
-                      00062  
+                      00061 ENDC  
 Warning[205]: Found directive in column 1. (org)
-                      00063 org 0                                   ; DIRECCION 0 DE LA MEMORIA
-                      00064  
-                      00065 ;-------------------------------------------------------------  
-                      00066 ; CONFIGURACION DE PUERTOS
-                      00067         
-Warning[203]: Found opcode in column 1. (clrf)
-000000 6A92           00068 clrf TRISA                      ; 
-Warning[203]: Found opcode in column 1. (clrf)
-000002 6A93           00069 clrf TRISB
-Warning[203]: Found opcode in column 1. (clrf)
-000004 6A94           00070 clrf TRISC                      ; 
-Warning[203]: Found opcode in column 1. (clrf)
-000006 6A95           00071 clrf TRISD
-Warning[203]: Found opcode in column 1. (clrf)
-000008 6A96           00072 clrf TRISE
-                      00073 
-                      00074 ;//------------------------------------------------------
-                      00075 ; ahora viene la deshabilitaci n de modulos (pheriperals)
-                      00076 ;*******************************************************
-Warning[203]: Found opcode in column 1. (clrf)
-00000A 6AC2           00077 clrf ADCON0                     ; desactiva el CAD
-Warning[203]: Found opcode in column 1. (movlw)
-00000C 0E0F           00078 movlw 0xf 
-Warning[203]: Found opcode in column 1. (movwf)
-00000E 6EC1           00079 movwf ADCON1                    ; todas digitales
+                      00062 org 0x0000                                      ; DIRECCION 0 DE LA MEMORIA
+Warning[203]: Found opcode in column 1. (GOTO)
+000000 EF?? F???      00063 GOTO START
+Warning[205]: Found directive in column 1. (org)
+                      00064 org     0x0020
+Warning[205]: Found directive in column 1. (DB)
+000020 063F 4F5B 6D66 00065 DB 0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F
+       077D 6F7F 
+                      00066 
+                      00067 ; CONFIGURACION DE PUERTOS
+                      00068 
+00002A                00069 START
+00002A 0E00           00070     MOVLW 0x00
+00002C 6E92           00071     MOVWF TRISA
+00002E 0E00           00072     MOVLW 0x00
+000030 6E93           00073     MOVWF TRISB
+                      00074 
+                      00075 
+                      00076 ;//------------------------------------------------------
+                      00077 ; ahora viene la deshabilitación de modulos (pheriperals)
+                      00078 ;*******************************************************
+                      00079 
                       00080 
+Warning[203]: Found opcode in column 1. (MOVLW)
+000032 0E72           00081 MOVLW   0X72
+Warning[203]: Found opcode in column 1. (MOVWF)
+000034 6ED3           00082 MOVWF   OSCCON                  ;Configuraci n del registro OSCCON
+                      00083 
+Warning[203]: Found opcode in column 1. (MOVLW)
+000036 0E84           00084 MOVLW   0X84
+Warning[203]: Found opcode in column 1. (MOVWF)
+000038 6ED5           00085 MOVWF   T0CON                   ;Configuraci n del timer 0
+                      00086 
+Warning[203]: Found opcode in column 1. (clrf)
+00003A 6AC2           00087 clrf ADCON0                     ; desactiva el CAD
 Warning[203]: Found opcode in column 1. (movlw)
-000010 0E07           00081 movlw 0x07 
+00003C 0E0F           00088 movlw 0xf 
 Warning[203]: Found opcode in column 1. (movwf)
-000012 6EB4           00082 movwf CMCON                     ;desactiva el modulo comparador
-Warning[207]: Found label after column 1. (CONT)
-  0000000A            00002     CONT    equ 0x0A
-Warning[207]: Found label after column 1. (RET_1M)
-  0000000B            00003     RET_1M  equ 0x0B
-Warning[207]: Found label after column 1. (RET_1S)
-  0000000C            00004     RET_1S  equ 0x0C
-000014 0E00           00005     movlw   0x00
-000016 6E93           00006     movwf   TRISB
-000018 6A0A           00007     clrf    CONT ;1CM
-00001A D???           00008     bra     inicio
-                      00009 ;Retardo de 1 milisegundo
-Warning[207]: Found label after column 1. (R_1S)
-MPASM 5.87                     PRACTICA5.ASM   5-4-2024  13:14:52         PAGE  4
+00003E 6EC1           00089 movwf ADCON1                    ; todas digitales
+                      00090 
+Warning[203]: Found opcode in column 1. (movlw)
+000040 0E07           00091 movlw 0x07 
+MPASM 5.87                PRACTICA5_TMR0.ASM   5-4-2024  13:11:38         PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-Warning[202]: Argument out of range.  Least significant bits used.
-00001C 0EE8           00010     R_1S    movlw   d'1000'
-00001E 6E0C           00011             movwf   RET_1S
-                      00012 
-Warning[207]: Found label after column 1. (R_1M)
-Warning[202]: Argument out of range.  Least significant bits used.
-000020 0EF2           00013     R_1M    movlw   d'498' ;1CM
-000022 6E0B           00014             movwf   RET_1M ;1CM
-Warning[207]: Found label after column 1. (lazo)
-000024 0000           00015     lazo    nop
-000026 2E0B           00016             decfsz  RET_1M
-000028 D???           00017             bra     lazo
-00002A 2E0C           00018             decfsz  RET_1S
-00002C D???           00019             bra     R_1M
-00002E 0012           00020             return
-                      00021             
-000030 500A           00022 inicio  movf    CONT, 0 ;1CM
-000032 6E81           00023         movwf   PORTB ;1CM
-000034 EC?? F???      00024         call    lazo
-000038 2A0A           00025         incf    CONT, 1 ;1CM
-00003A EF?? F???      00026         goto    inicio ;2CM
-                      00027 
+Warning[203]: Found opcode in column 1. (movwf)
+000042 6EB4           00092 movwf CMCON                     ;desactiva el modulo comparador
+                      00093                 
+Warning[203]: Found opcode in column 1. (GOTO)
+000044 EF?? F???      00094 GOTO    INICIO
+                      00095 
+                      00096 ;----------DELAY SECTION------------
+                      00097         
+000048                00098 ESPERA                                                  ; Delay de 1s
+000048 0E85           00099     MOVLW       0x85
+00004A 6ED7           00100     MOVWF       TMR0H
+00004C 0EEE           00101     MOVLW       0xEE
+00004E 6ED6           00102     MOVWF       TMR0L
+                      00103 
+000050 A4F2           00104 RELOJ   BTFSS   INTCON,TMR0IF
+000052 EF?? F???      00105         GOTO    RELOJ
+000056 94F2           00106         BCF     INTCON,TMR0IF
+000058 0C00           00107         RETLW   0
+                      00108         
+                      00002         
+  0000000A            00003 CONT    equ     0x0A
+  0000000B            00004 RET_1M  equ     0x0B
+  0000000C            00005 RET_1S  equ     0x0C
+                      00006 
+00005A                00007 INICIO
+00005A 500A           00008         movf    CONT, 0
+00005C 6E81           00009         movwf   PORTB
+00005E EC?? F???      00010         call    ESPERA
+000062 2A0A           00011         incf    CONT, 1
+000064 EF?? F???      00012         goto    INICIO
 Warning[205]: Found directive in column 1. (end)
-                      00028 end
-MPASM 5.87                     PRACTICA5.ASM   5-4-2024  13:14:52         PAGE  5
+                      00013 end
+MPASM 5.87                PRACTICA5_TMR0.ASM   5-4-2024  13:11:38         PAGE  5
 
 
 SYMBOL TABLE
@@ -264,7 +272,7 @@ BRG16                             00000003
 BRGH                              00000002
 BSR                               00000FE0
 BTOEE                             00000004
-MPASM 5.87                     PRACTICA5.ASM   5-4-2024  13:14:52         PAGE  6
+MPASM 5.87                PRACTICA5_TMR0.ASM   5-4-2024  13:11:38         PAGE  6
 
 
 SYMBOL TABLE
@@ -323,7 +331,7 @@ CM2                               00000002
 CMCON                             00000FB4
 CMIE                              00000006
 CMIF                              00000006
-MPASM 5.87                     PRACTICA5.ASM   5-4-2024  13:14:52         PAGE  7
+MPASM 5.87                PRACTICA5_TMR0.ASM   5-4-2024  13:11:38         PAGE  7
 
 
 SYMBOL TABLE
@@ -382,7 +390,7 @@ EEIF                              00000004
 EEIP                              00000004
 EEPGD                             00000007
 ENDP0                             00000003
-MPASM 5.87                     PRACTICA5.ASM   5-4-2024  13:14:52         PAGE  8
+MPASM 5.87                PRACTICA5_TMR0.ASM   5-4-2024  13:11:38         PAGE  8
 
 
 SYMBOL TABLE
@@ -396,6 +404,7 @@ EPHSHK                            00000004
 EPINEN                            00000001
 EPOUTEN                           00000002
 EPSTALL                           00000000
+ESPERA                            00000048
 FAST                              00000001
 FERR                              00000002
 FLTS                              00000002
@@ -440,13 +449,13 @@ HLVDL1                            00000001
 HLVDL2                            00000002
 HLVDL3                            00000003
 I2C_DAT                           00000005
-I2C_READ                          00000002
-MPASM 5.87                     PRACTICA5.ASM   5-4-2024  13:14:52         PAGE  9
+MPASM 5.87                PRACTICA5_TMR0.ASM   5-4-2024  13:11:38         PAGE  9
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+I2C_READ                          00000002
 I2C_START                         00000003
 I2C_STOP                          00000004
 IDLEIE                            00000004
@@ -455,6 +464,7 @@ IDLEN                             00000007
 INDF0                             00000FEF
 INDF1                             00000FE7
 INDF2                             00000FDF
+INICIO                            0000005A
 INT0                              00000000
 INT0E                             00000004
 INT0F                             00000001
@@ -498,14 +508,14 @@ LATA3                             00000003
 LATA4                             00000004
 LATA5                             00000005
 LATA6                             00000006
-LATB                              00000F8A
-LATB0                             00000000
-MPASM 5.87                     PRACTICA5.ASM   5-4-2024  13:14:52         PAGE 10
+MPASM 5.87                PRACTICA5_TMR0.ASM   5-4-2024  13:11:38         PAGE 10
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+LATB                              00000F8A
+LATB0                             00000000
 LATB1                             00000001
 LATB2                             00000002
 LATB3                             00000003
@@ -557,14 +567,14 @@ NOT_POR                           00000001
 NOT_RBPU                          00000007
 NOT_RI                            00000004
 NOT_T1SYNC                        00000002
-NOT_T3SYNC                        00000002
-NOT_TO                            00000003
-MPASM 5.87                     PRACTICA5.ASM   5-4-2024  13:14:52         PAGE 11
+MPASM 5.87                PRACTICA5_TMR0.ASM   5-4-2024  13:11:38         PAGE 11
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+NOT_T3SYNC                        00000002
+NOT_TO                            00000003
 NOT_W                             00000002
 NOT_WRITE                         00000002
 OERR                              00000001
@@ -616,14 +626,14 @@ PLUSW2                            00000FDB
 POR                               00000001
 PORTA                             00000F80
 PORTB                             00000F81
-PORTC                             00000F82
-PORTD                             00000F83
-MPASM 5.87                     PRACTICA5.ASM   5-4-2024  13:14:52         PAGE 12
+MPASM 5.87                PRACTICA5_TMR0.ASM   5-4-2024  13:11:38         PAGE 12
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+PORTC                             00000F82
+PORTD                             00000F83
 PORTE                             00000F84
 POSTDEC0                          00000FED
 POSTDEC1                          00000FE5
@@ -675,14 +685,14 @@ RC4                               00000004
 RC5                               00000005
 RC6                               00000006
 RC7                               00000007
-RCEN                              00000003
-RCIDL                             00000006
-MPASM 5.87                     PRACTICA5.ASM   5-4-2024  13:14:52         PAGE 13
+MPASM 5.87                PRACTICA5_TMR0.ASM   5-4-2024  13:11:38         PAGE 13
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+RCEN                              00000003
+RCIDL                             00000006
 RCIE                              00000005
 RCIF                              00000005
 RCIP                              00000005
@@ -707,6 +717,7 @@ RE1                               00000001
 RE2                               00000002
 RE3                               00000003
 READ_WRITE                        00000002
+RELOJ                             00000050
 RESUME                            00000002
 RET_1M                            0000000B
 RET_1S                            0000000C
@@ -716,8 +727,6 @@ RX                                00000007
 RX9                               00000006
 RX9D                              00000000
 RXDTP                             00000005
-R_1M                              00000020
-R_1S                              0000001C
 R_NOT_W                           00000002
 R_W                               00000002
 S                                 00000003
@@ -735,13 +744,13 @@ SPBRG                             00000FAF
 SPBRGH                            00000FB0
 SPEN                              00000007
 SPP0                              00000000
-SPP1                              00000001
-MPASM 5.87                     PRACTICA5.ASM   5-4-2024  13:14:52         PAGE 14
+MPASM 5.87                PRACTICA5_TMR0.ASM   5-4-2024  13:11:38         PAGE 14
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+SPP1                              00000001
 SPP2                              00000002
 SPP3                              00000003
 SPP4                              00000004
@@ -775,6 +784,7 @@ SSPOV                             00000006
 SSPSTAT                           00000FC7
 STALLIE                           00000005
 STALLIF                           00000005
+START                             0000002A
 STATUS                            00000FD8
 STKFUL                            00000007
 STKOVF                            00000007
@@ -793,14 +803,14 @@ T08BIT                            00000006
 T0CKI                             00000004
 T0CON                             00000FD5
 T0CS                              00000005
-T0IE                              00000005
-T0IF                              00000002
-MPASM 5.87                     PRACTICA5.ASM   5-4-2024  13:14:52         PAGE 15
+MPASM 5.87                PRACTICA5_TMR0.ASM   5-4-2024  13:11:38         PAGE 15
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+T0IE                              00000005
+T0IF                              00000002
 T0IP                              00000002
 T0PS0                             00000000
 T0PS1                             00000001
@@ -852,14 +862,14 @@ TMR1ON                            00000000
 TMR2                              00000FCC
 TMR2IE                            00000001
 TMR2IF                            00000001
-TMR2IP                            00000001
-TMR2ON                            00000002
-MPASM 5.87                     PRACTICA5.ASM   5-4-2024  13:14:52         PAGE 16
+MPASM 5.87                PRACTICA5_TMR0.ASM   5-4-2024  13:11:38         PAGE 16
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+TMR2IP                            00000001
+TMR2ON                            00000002
 TMR3                              00000FB2
 TMR3CS                            00000001
 TMR3H                             00000FB3
@@ -911,14 +921,14 @@ TRISD6                            00000006
 TRISD7                            00000007
 TRISE                             00000F96
 TRISE0                            00000000
-TRISE1                            00000001
-TRISE2                            00000002
-MPASM 5.87                     PRACTICA5.ASM   5-4-2024  13:14:52         PAGE 17
+MPASM 5.87                PRACTICA5_TMR0.ASM   5-4-2024  13:11:38         PAGE 17
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+TRISE1                            00000001
+TRISE2                            00000002
 TRMT                              00000001
 TRNIE                             00000003
 TRNIF                             00000003
@@ -970,14 +980,14 @@ UOEMON                            00000006
 UPUEN                             00000004
 URSTIE                            00000000
 URSTIF                            00000000
-USBEN                             00000003
-USBIE                             00000005
-MPASM 5.87                     PRACTICA5.ASM   5-4-2024  13:14:52         PAGE 18
+MPASM 5.87                PRACTICA5_TMR0.ASM   5-4-2024  13:11:38         PAGE 18
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+USBEN                             00000003
+USBIE                             00000005
 USBIF                             00000005
 USBIP                             00000005
 USTAT                             00000F6C
@@ -1029,14 +1039,14 @@ _CP0_ON_5L                        000000FE
 _CP1_OFF_5L                       000000FF
 _CP1_ON_5L                        000000FD
 _CP2_OFF_5L                       000000FF
-_CP2_ON_5L                        000000FB
-_CP3_OFF_5L                       000000FF
-MPASM 5.87                     PRACTICA5.ASM   5-4-2024  13:14:52         PAGE 19
+MPASM 5.87                PRACTICA5_TMR0.ASM   5-4-2024  13:11:38         PAGE 19
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+_CP2_ON_5L                        000000FB
+_CP3_OFF_5L                       000000FF
 _CP3_ON_5L                        000000F7
 _CPB_OFF_5H                       000000FF
 _CPB_ON_5H                        000000BF
@@ -1088,14 +1098,14 @@ _IESO_OFF_1H                      0000007F
 _IESO_ON_1H                       000000FF
 _LPT1OSC_OFF_3H                   000000FB
 _LPT1OSC_ON_3H                    000000FF
-_LVP_OFF_4L                       000000FB
-_LVP_ON_4L                        000000FF
-MPASM 5.87                     PRACTICA5.ASM   5-4-2024  13:14:52         PAGE 20
+MPASM 5.87                PRACTICA5_TMR0.ASM   5-4-2024  13:11:38         PAGE 20
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+_LVP_OFF_4L                       000000FB
+_LVP_ON_4L                        000000FF
 _MCLRE_OFF_3H                     0000007F
 _MCLRE_ON_3H                      000000FF
 _PBADEN_OFF_3H                    000000FD
@@ -1147,21 +1157,19 @@ _WRTB_ON_6H                       000000BF
 _WRTC_OFF_6H                      000000FF
 _WRTC_ON_6H                       000000DF
 _WRTD_OFF_6H                      000000FF
-_WRTD_ON_6H                       0000007F
-_XINST_OFF_4L                     000000BF
-MPASM 5.87                     PRACTICA5.ASM   5-4-2024  13:14:52         PAGE 21
+MPASM 5.87                PRACTICA5_TMR0.ASM   5-4-2024  13:11:38         PAGE 21
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+_WRTD_ON_6H                       0000007F
+_XINST_OFF_4L                     000000BF
 _XINST_ON_4L                      000000FF
 __18F4550                         00000001
-inicio                            00000030
-lazo                              00000024
 
 Errors   :     0
-Warnings :    62 reported,     0 suppressed
+Warnings :    57 reported,     0 suppressed
 Messages :     0 reported,     0 suppressed
 
 

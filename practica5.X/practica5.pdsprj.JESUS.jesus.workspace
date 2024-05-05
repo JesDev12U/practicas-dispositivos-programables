@@ -8,7 +8,7 @@
   <PWI>
    <POPUP w="1357" x="106" flags="00000002" y="236" h="307" pid="0" iid="-1">
     <PROPERTIES>
-     <ITEM name="Message Column Width">1085</ITEM>
+     <ITEM name="Message Column Width">1206</ITEM>
      <ITEM name="ShowGrid">No</ITEM>
      <ITEM name="Source Column Width">100</ITEM>
      <ITEM name="Time Column Width">120</ITEM>
@@ -55,7 +55,7 @@
      <ITEM name="TopLineAddress">00000000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="8" x="206" flags="80000002" y="336" h="16" pid="12" iid="1">
+   <POPUP w="8" x="206" flags="00000002" y="336" h="16" pid="12" iid="1">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -98,7 +98,7 @@
    <POPUP w="202" x="286" flags="00000008" y="416" h="568" pid="10" iid="1">
     <PROPERTIES/>
    </POPUP>
-   <POPUP w="8" x="306" flags="80000002" y="436" h="8" pid="13" iid="1">
+   <POPUP w="8" x="306" flags="00000002" y="436" h="8" pid="13" iid="1">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
