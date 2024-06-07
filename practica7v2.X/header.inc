@@ -63,7 +63,7 @@ uni EQU 0x0C
 ; dec EQU 0x0D
 K EQU 0x0E
 L EQU 0x0F
-#DEFINE pulsador PORTA,1
+#DEFINE pulsador PORTC,0
 #DEFINE disp_uni PORTB
 ; #DEFINE disp_dec PORTA
 org 0					; DIRECCION 0 DE LA MEMORIA
@@ -71,11 +71,11 @@ org 0					; DIRECCION 0 DE LA MEMORIA
 ;-------------------------------------------------------------	
 ; CONFIGURACION DE PUERTOS
 	
-		clrf TRISA  			; 
-		MOVLW 0xFF
-		MOVWF TRISA
+		clrf TRISC  			; 
+		MOVLW 0x01
+		MOVWF TRISC
 		clrf TRISB
-		CLRF TRISC		; 
+		CLRF TRISA		; 
     		clrf TRISD
     		clrf TRISE
 
