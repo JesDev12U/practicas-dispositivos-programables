@@ -1,0 +1,69 @@
+MPLINK 5.09, LINKER
+Linker Map File - Created Thu Jun 06 21:04:31 2024
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x00008a
+                   .cinit    romdata   0x00008a    program   0x000002
+.config_300000_BUILD/DEFAULT/PRODUCTION/PRACTIC    romdata   0x300000    program   0x000001
+.config_300001_BUILD/DEFAULT/PRODUCTION/PRACTIC    romdata   0x300001    program   0x000001
+.config_300002_BUILD/DEFAULT/PRODUCTION/PRACTIC    romdata   0x300002    program   0x000001
+.config_300003_BUILD/DEFAULT/PRODUCTION/PRACTIC    romdata   0x300003    program   0x000001
+.config_300005_BUILD/DEFAULT/PRODUCTION/PRACTIC    romdata   0x300005    program   0x000001
+.config_300006_BUILD/DEFAULT/PRODUCTION/PRACTIC    romdata   0x300006    program   0x000001
+.config_300008_BUILD/DEFAULT/PRODUCTION/PRACTIC    romdata   0x300008    program   0x000001
+.config_300009_BUILD/DEFAULT/PRODUCTION/PRACTIC    romdata   0x300009    program   0x000001
+.config_30000A_BUILD/DEFAULT/PRODUCTION/PRACTIC    romdata   0x30000a    program   0x000001
+.config_30000B_BUILD/DEFAULT/PRODUCTION/PRACTIC    romdata   0x30000b    program   0x000001
+.config_30000C_BUILD/DEFAULT/PRODUCTION/PRACTIC    romdata   0x30000c    program   0x000001
+.config_30000D_BUILD/DEFAULT/PRODUCTION/PRACTIC    romdata   0x30000d    program   0x000001
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x00008b      
+                            0x300000    0x300003      
+                            0x300005    0x300006      
+                            0x300008    0x30000d      
+            152 out of 33048 program addresses used, program memory utilization is 0%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   INICIO   0x000032    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+                    TABLA   0x00001c    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+                     cero   0x000064    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+                  fin_ver   0x000068    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+                  inc_uni   0x00005e    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+                    incre   0x000054    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+                    ini_1   0x00003e    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+                    ini_2   0x00004e    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+                   opera1   0x000078    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+                   opera2   0x00007c    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+                 ret_20ms   0x000074    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+                   salida   0x000072    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    TABLA   0x00001c    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+                   INICIO   0x000032    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+                    ini_1   0x00003e    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+                    ini_2   0x00004e    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+                    incre   0x000054    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+                  inc_uni   0x00005e    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+                     cero   0x000064    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+                  fin_ver   0x000068    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+                   salida   0x000072    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+                 ret_20ms   0x000074    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+                   opera1   0x000078    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+                   opera2   0x00007c    program     static C:\Users\jesus\Desktop\PracticasDispositivosProgramables\practica7v2.X\practica7v2.asm
+
+
