@@ -563,12 +563,12 @@ L_op28:
 	MOVLW       hi_addr(?lstr2_practica9+0)
 	MOVWF       FARG_Lcd_Out_text+1 
 	CALL        _Lcd_Out+0, 0
-;practica9.c,138 :: 		Delay_ms(100);
-	MOVLW       2
+;practica9.c,138 :: 		Delay_ms(500);
+	MOVLW       6
 	MOVWF       R11, 0
-	MOVLW       4
+	MOVLW       19
 	MOVWF       R12, 0
-	MOVLW       186
+	MOVLW       173
 	MOVWF       R13, 0
 L_op210:
 	DECFSZ      R13, 1, 1
@@ -577,6 +577,7 @@ L_op210:
 	BRA         L_op210
 	DECFSZ      R11, 1, 1
 	BRA         L_op210
+	NOP
 	NOP
 ;practica9.c,139 :: 		}
 L_end_op2:
@@ -668,52 +669,48 @@ _main:
 ;practica9.c,166 :: 		CMCON = 0X07;
 	MOVLW       7
 	MOVWF       CMCON+0 
-;practica9.c,167 :: 		Lcd_Init();
+;practica9.c,167 :: 		OSCCON = 0x72;
+	MOVLW       114
+	MOVWF       OSCCON+0 
+;practica9.c,168 :: 		Lcd_Init();
 	CALL        _Lcd_Init+0, 0
-;practica9.c,168 :: 		Lcd_cmd(_LCD_CURSOR_OFF);
+;practica9.c,169 :: 		Lcd_cmd(_LCD_CURSOR_OFF);
 	MOVLW       12
 	MOVWF       FARG_Lcd_Cmd_out_char+0 
 	CALL        _Lcd_Cmd+0, 0
-;practica9.c,170 :: 		while(1) {
+;practica9.c,171 :: 		while(1) {
 L_main14:
-;practica9.c,171 :: 		switch(PORTA) {
-	GOTO        L_main16
-;practica9.c,172 :: 		case 0b00:{
-L_main18:
-;practica9.c,173 :: 		op1();
-	CALL        _op1+0, 0
-;practica9.c,174 :: 		break;
-	GOTO        L_main17
-;practica9.c,176 :: 		case 0b01:{
-L_main19:
-;practica9.c,177 :: 		op2();
-	CALL        _op2+0, 0
-;practica9.c,178 :: 		break;
-	GOTO        L_main17
-;practica9.c,181 :: 		case 0b10:{
-L_main20:
-;practica9.c,182 :: 		op3();
-	CALL        _op3+0, 0
-;practica9.c,183 :: 		break;
-	GOTO        L_main17
-;practica9.c,185 :: 		}
-L_main16:
-	MOVF        PORTA+0, 0 
-	XORLW       0
-	BTFSC       STATUS+0, 2 
+;practica9.c,187 :: 		if (PORTA.RA0 == 0 && PORTA.RA1 == 0) op1();
+	BTFSC       PORTA+0, 0 
 	GOTO        L_main18
-	MOVF        PORTA+0, 0 
-	XORLW       1
-	BTFSC       STATUS+0, 2 
+	BTFSC       PORTA+0, 1 
+	GOTO        L_main18
+L__main29:
+	CALL        _op1+0, 0
 	GOTO        L_main19
-	MOVF        PORTA+0, 0 
-	XORLW       2
-	BTFSC       STATUS+0, 2 
-	GOTO        L_main20
-L_main17:
-;practica9.c,186 :: 		}
+L_main18:
+;practica9.c,188 :: 		else if (PORTA.RA0 == 0 && PORTA.RA1 == 1) op2();
+	BTFSC       PORTA+0, 0 
+	GOTO        L_main22
+	BTFSS       PORTA+0, 1 
+	GOTO        L_main22
+L__main28:
+	CALL        _op2+0, 0
+	GOTO        L_main23
+L_main22:
+;practica9.c,189 :: 		else if (PORTA.RA0 == 1 && PORTA.RA1 == 0) op3();
+	BTFSS       PORTA+0, 0 
+	GOTO        L_main26
+	BTFSC       PORTA+0, 1 
+	GOTO        L_main26
+L__main27:
+	CALL        _op3+0, 0
+L_main26:
+L_main23:
+L_main19:
+;practica9.c,190 :: 		}
 	GOTO        L_main14
-;practica9.c,187 :: 		}
+;practica9.c,191 :: 		}
 L_end_main:
 	GOTO        $+0
 ; end of _main

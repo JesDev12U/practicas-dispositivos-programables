@@ -1,0 +1,6 @@
+[PROJECTS]
+Count=2
+Project0=..\practica9\practica9.mcppi
+Project1=HolaMundoLCD.mcppi
+[ActiveProject]
+Index=1

@@ -1,11 +1,11 @@
-0	1	mikroCPIC1618.exe -MSF -DBG -pP18F4550 -DL -O11111114 -fo20 -N"C:\Users\jesus\Desktop\PracticasDispositivosProgramables\examen_C\examen_c.mcppi" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Defs\" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\uses\P18\" -SP"C:\Users\jesus\Desktop\PracticasDispositivosProgramables\examen_C\" -IP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\uses\P18\" "examen_c.c" "__Lib_Math.mcl" "__Lib_MathDouble.mcl" "__Lib_System.mcl" "__Lib_Delays.mcl"	 
+0	1	mikroCPIC1618.exe -MSF -DBG -pP18F4550 -DL -O11111114 -fo8 -N"C:\Users\jesus\Desktop\PracticasDispositivosProgramables\examen_C\examen_c.mcppi" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Defs\" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\uses\P18\" -SP"C:\Users\jesus\Desktop\PracticasDispositivosProgramables\examen_C\" -IP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\uses\P18\" "examen_c.c" "__Lib_Math.mcl" "__Lib_MathDouble.mcl" "__Lib_System.mcl" "__Lib_Delays.mcl"	 
 hint: 0	1139	Available RAM: 2027 [bytes], Available ROM: 32768 [bytes]	 
 diagnostics: 0	122	Compilation Started	examen_c.c
-diagnostics: 14	123	Compiled Successfully	examen_c.c
-diagnostics: 0	127	All files Compiled in 78 ms	 
+diagnostics: 15	123	Compiled Successfully	examen_c.c
+diagnostics: 0	127	All files Compiled in 94 ms	 
 hint: 0	1144	Used RAM (bytes): 17 (1%)  Free RAM (bytes): 2010 (99%)	Used RAM (bytes): 17 (1%)  Free RAM (bytes): 2010 (99%)
-hint: 0	1144	Used ROM (bytes): 167 (1%)  Free ROM (bytes): 32601 (99%)	Used ROM (bytes): 167 (1%)  Free ROM (bytes): 32601 (99%)
+hint: 0	1144	Used ROM (bytes): 171 (1%)  Free ROM (bytes): 32597 (99%)	Used ROM (bytes): 171 (1%)  Free ROM (bytes): 32597 (99%)
 diagnostics: 0	125	Project Linked Successfully	examen_c.mcppi
 diagnostics: 0	128	Linked in 31 ms	 
-diagnostics: 0	129	Project 'examen_c.mcppi' completed: 266 ms	 
-diagnostics: 0	103	Finished successfully: 15 jun. 2024, 03:06:50	examen_c.mcppi
+diagnostics: 0	129	Project 'examen_c.mcppi' completed: 265 ms	 
+diagnostics: 0	103	Finished successfully: 20 jun. 2024, 15:05:13	examen_c.mcppi

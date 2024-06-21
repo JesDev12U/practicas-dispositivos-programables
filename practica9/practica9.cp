@@ -136,7 +136,7 @@ void op2() {
  }
 
  Lcd_out(1, cont, "Hola maquina");
- Delay_ms(100);
+ Delay_ms(500);
 }
 
 unsigned short pos = 1;
@@ -165,24 +165,14 @@ void main() {
  ADCON0 = 0X00;
  ADCON1 = 0X0F;
  CMCON = 0X07;
+ OSCCON = 0x72;
  Lcd_Init();
  Lcd_cmd(_LCD_CURSOR_OFF);
 
  while(1) {
- switch(PORTA) {
- case 0b00:{
- op1();
- break;
- }
- case 0b01:{
- op2();
- break;
- }
-
- case 0b10:{
- op3();
- break;
- }
- }
+#line 187 "C:/Users/jesus/Desktop/PracticasDispositivosProgramables/practica9/practica9.c"
+ if (PORTA.RA0 == 0 && PORTA.RA1 == 0) op1();
+ else if (PORTA.RA0 == 0 && PORTA.RA1 == 1) op2();
+ else if (PORTA.RA0 == 1 && PORTA.RA1 == 0) op3();
  }
 }

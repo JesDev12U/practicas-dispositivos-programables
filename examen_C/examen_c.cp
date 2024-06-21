@@ -5,11 +5,12 @@ unsigned short cont = 0;
 void main() {
  ADCON1 = 0X0F;
  CMCON = 0X07;
+ OSCCON = 0X72;
  TRISB = 0x00;
 
  while(1) {
  PORTB = display_7seg[cont++];
- Delay_ms(100);
+ Delay_ms(1000);
  if (cont == 16) cont = 0;
  }
 }
